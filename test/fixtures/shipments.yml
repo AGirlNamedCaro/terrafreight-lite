@@ -1,15 +1,23 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# Calgary to Vancouver - Pending
+pending_shipment:
+  origin_lat: 51.0447
+  origin_lng: -114.0719
+  destination_lat: 49.2827
+  destination_lng: -123.1207
+  status: 0  # pending
 
-one:
-  origin_lat: 9.99
-  origin_lng: 9.99
-  destination_lat: 9.99
-  destination_lng: 9.99
-  status: 1
+# Edmonton to Calgary - In Transit
+in_transit_shipment:
+  origin_lat: 53.5461
+  origin_lng: -113.4909
+  destination_lat: 51.0447
+  destination_lng: -114.0719
+  status: 1  # in_transit
 
-two:
-  origin_lat: 9.99
-  origin_lng: 9.99
-  destination_lat: 9.99
-  destination_lng: 9.99
-  status: 1
+# Vancouver to Calgary - Delivered
+delivered_shipment:
+  origin_lat: 49.2827
+  origin_lng: -123.1207
+  destination_lat: 51.0447
+  destination_lng: -114.0719
+  status: 2  # delivered
