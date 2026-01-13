@@ -1,4 +1,5 @@
 class Shipment < ApplicationRecord
+  broadcasts_to ->(shipment) { "shipments" }, inserts_by: :prepend
   enum :status, [:pending, :in_transit, :delivered]
 
   validates :origin_lat, :origin_lng, :destination_lat, :destination_lng, presence: true
