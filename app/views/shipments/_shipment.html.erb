@@ -1,6 +1,6 @@
 <%= turbo_frame_tag dom_id(shipment) do %>
   <div class="border rounded-lg p-4 bg-white shadow mb-4">
-    <div class="flex justify-between items-start">
+    <div class="flex justify-between items-start mb-3">
       <div class="flex-1">
         <div class="flex items-center gap-2 mb-2">
           <span class="text-sm font-medium text-gray-500">ID: <%= shipment.id %></span>
@@ -24,17 +24,17 @@
                     class: "text-red-600 hover:text-red-800 font-medium" %>
       </div>
 
-      <div class="flex gap-2 mt-3">
-  <% if shipment.pending? %>
-    <%= button_to "Start Transit", start_transit_shipment_path(shipment),
-                  method: :patch,
-                  class: "bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-sm font-medium" %>
-  <% elsif shipment.in_transit? %>
-    <%= button_to "Mark Delivered", mark_delivered_shipment_path(shipment),
-                  method: :patch,
-                  class: "bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm font-medium" %>
-  <% end %>
-</div>
+      <div class="flex gap-2 px-2">
+      <% if shipment.pending? %>
+        <%= button_to "Start Transit", start_transit_shipment_path(shipment),
+                      method: :patch,
+                      class: "bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-sm font-medium" %>
+      <% elsif shipment.in_transit? %>
+        <%= button_to "Mark Delivered", mark_delivered_shipment_path(shipment),
+                      method: :patch,
+                      class: "bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm font-medium" %>
+      <% end %>
+    </div>
     </div>
   </div>
 <% end %>

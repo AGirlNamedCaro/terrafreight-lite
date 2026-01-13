@@ -1,5 +1,5 @@
 class ShipmentsController < ApplicationController
-  before_action :set_shipment, only: %i[show edit update destroy]
+  before_action :set_shipment, only: %i[show edit update destroy start_transit mark_delivered]
 
   def index
     @shipments = Shipment.all.order(created_at: :desc)
@@ -36,6 +36,24 @@ class ShipmentsController < ApplicationController
   def destroy
     @shipment.destroy
     redirect_to shipments_url, notice: "Shipment was successfully destroyed."
+  end
+
+  def start_transit
+    @shipment.mark_in_transit!
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to shipments_path, notice: "Shipment is now in transit." }
+    end
+  end
+
+  def mark_delivered
+    @shipment.mark_delivered!
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to shipments_path, notice: "Shipment has been delivered." }
+    end
   end
 
   private
