@@ -14,7 +14,7 @@ class ShipmentsController < ApplicationController
   def create
     @shipment = Shipment.new(shipment_params)
     if @shipment.save
-      redirect_to @shipment, notice: "Shipment was successfully created."
+      redirect_to shipments_path
     else
       render :new, status: :unprocessable_entity
     end
