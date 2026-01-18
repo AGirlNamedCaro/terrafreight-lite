@@ -1,11 +1,9 @@
 class ShipmentsController < ApplicationController
-  before_action :set_shipment, only: %i[show edit update destroy start_transit mark_delivered]
+  before_action :set_shipment, only: %i[edit update destroy start_transit mark_delivered]
 
   def index
     @shipments = Shipment.all.order(created_at: :desc)
   end
-
-  def show; end
 
   def new
     @shipment = Shipment.new

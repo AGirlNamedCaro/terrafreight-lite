@@ -27,7 +27,7 @@ class ShipmentsControllerTest < ActionDispatch::IntegrationTest
                           }
     end
 
-    assert_redirected_to shipment_url(Shipment.order(:created_at).last)
+    assert_redirected_to shipments_path
   end
 
   test "should not create invalid shipment" do
@@ -43,11 +43,6 @@ class ShipmentsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_response :unprocessable_entity
-  end
-
-  test "should show shipment" do
-    get shipment_url(@shipment)
-    assert_response :success
   end
 
   test "should get edit" do
