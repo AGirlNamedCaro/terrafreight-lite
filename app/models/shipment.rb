@@ -1,6 +1,6 @@
 class Shipment < ApplicationRecord
   broadcasts_to ->(shipment) { "shipments" }, inserts_by: :prepend
-  enum :status, [:pending, :in_transit, :delivered]
+  enum :status, [ :pending, :in_transit, :delivered ]
 
   validates :origin_lat, :origin_lng, :destination_lat, :destination_lng, presence: true
   validates :origin_lat, :destination_lat, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90 }
@@ -16,8 +16,8 @@ class Shipment < ApplicationRecord
 
   def distance_in_km
     Geocoder::Calculations.distance_between(
-      [origin_lat, origin_lng],
-      [destination_lat, destination_lng],
+      [ origin_lat, origin_lng ],
+      [ destination_lat, destination_lng ],
       units: :km,
     ).round(2)
   end

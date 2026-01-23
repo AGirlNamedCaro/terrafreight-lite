@@ -22,8 +22,8 @@ class ShipmentsControllerTest < ActionDispatch::IntegrationTest
                               origin_lat: 51.0447,
                               origin_lng: -114.0719,
                               destination_lat: 49.2827,
-                              destination_lng: -123.1207,
-                            },
+                              destination_lng: -123.1207
+                            }
                           }
     end
 
@@ -37,8 +37,8 @@ class ShipmentsControllerTest < ActionDispatch::IntegrationTest
                               origin_lat: nil,
                               origin_lng: -114.0719,
                               destination_lat: 49.2827,
-                              destination_lng: -123.1207,
-                            },
+                              destination_lng: -123.1207
+                            }
                           }
     end
 
@@ -53,8 +53,8 @@ class ShipmentsControllerTest < ActionDispatch::IntegrationTest
   test "should update shipment" do
     patch shipment_url(@shipment), params: {
                                      shipment: {
-                                       origin_lat: 45.5017,
-                                     },
+                                       origin_lat: 45.5017
+                                     }
                                    }
 
     assert_equal 45.5017, @shipment.reload.origin_lat
@@ -63,8 +63,8 @@ class ShipmentsControllerTest < ActionDispatch::IntegrationTest
   test "should not update with invalid attributes" do
     patch shipment_url(@shipment), params: {
                                      shipment: {
-                                       origin_lat: nil,
-                                     },
+                                       origin_lat: nil
+                                     }
                                    }
 
     assert_response :unprocessable_entity
